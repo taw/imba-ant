@@ -1,0 +1,27 @@
+@import 'normalize-scss';
+@include normalize();
+
+.App {
+  header {
+    font-size: 64px;
+    text-align: center;
+  }
+}
+svg {
+  height: 400px;
+  width: 400px;
+  background-color: pink;
+  margin: auto;
+  display: block;
+}
+
+rect {
+  stroke: 1px solid black;
+
+}
+.color-0 {
+  fill: purple;
+}
+.color-1 {
+  fill: cyan;
+}
