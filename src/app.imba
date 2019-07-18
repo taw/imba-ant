@@ -66,8 +66,9 @@ tag App
     @sim = AntSimulation.new
 
     set-interval(&,10) do
-      for i in [1..1000]
-        @sim.step
+      unless @paused
+        for i in [1..1000]
+          @sim.step
       Imba.commit
 
   def transform
@@ -80,13 +81,32 @@ tag App
     let s = 400 / Math.max(xsize, ysize)
     "scale({s}) translate({-xmin*20}px, {-ymin*20}px)"
 
+  def pause
+    @paused = true
+
+  def resume
+    @paused = false
+
+  def restart
+    @sim = AntSimulation.new
+
   def render
     <self>
       <header>
-        "Hello, world!"
+        "Langton's Ant"
       <svg:svg>
         <svg:g style="transform: {transform};">
           for t in @sim:_trace
             <svg:rect .{"color-{t:c}"} x=(20*t:x) y=(20*t:y) height=18 width=18>
+      <div.form>
+        <div.group>
+          unless @paused
+            <button :tap.pause>
+              "Pause"
+          if @paused
+            <button :tap.resume>
+              "Resume"
+          <button :tap.restart>
+            "Restart"
 
 Imba.mount <App>

@@ -13,15 +13,37 @@ svg {
   background-color: pink;
   margin: auto;
   display: block;
+
+  rect {
+    stroke: 1px solid black;
+  }
+
+  .color-0 {
+    fill: purple;
+  }
+  .color-1 {
+    fill: cyan;
+  }
 }
 
-rect {
-  stroke: 1px solid black;
+.form {
+  width: 400px;
+  margin: auto;
 
-}
-.color-0 {
-  fill: purple;
-}
-.color-1 {
-  fill: cyan;
+  label {
+    margin-left: 10px;
+  }
+  input {
+    margin: 0px 5px;
+  }
+  .state-color {
+    padding: 3px;
+    display: inline-block;
+  }
+  .color-0 {
+    background-color: purple;
+  }
+  .color-1 {
+    background-color: cyan;
+  }
 }
