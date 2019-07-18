@@ -409,15 +409,59 @@ template {
 svg {
   height: 400px;
   width: 400px;
-  background-color: pink;
+  background-color: #ccc;
   margin: auto;
   display: block; }
+  svg rect {
+    stroke: 1px solid black; }
+  svg .color-0 {
+    fill: #1f77b4; }
+  svg .color-1 {
+    fill: #ff7f0e; }
+  svg .color-2 {
+    fill: #2ca02c; }
+  svg .color-3 {
+    fill: #d62728; }
+  svg .color-4 {
+    fill: #9467bd; }
+  svg .color-5 {
+    fill: #8c564b; }
+  svg .color-6 {
+    fill: #e377c2; }
+  svg .color-7 {
+    fill: #7f7f7f; }
+  svg .color-8 {
+    fill: #bcbd22; }
+  svg .color-9 {
+    fill: #17becf; }
 
-rect {
-  stroke: 1px solid black; }
-
-.color-0 {
-  fill: purple; }
-
-.color-1 {
-  fill: cyan; }
+.form {
+  width: 400px;
+  margin: auto; }
+  .form label {
+    margin-left: 10px; }
+  .form input {
+    margin: 0px 5px; }
+  .form .state-color {
+    padding: 3px;
+    display: inline-block; }
+  .form .color-0 {
+    background-color: #1f77b4; }
+  .form .color-1 {
+    background-color: #ff7f0e; }
+  .form .color-2 {
+    background-color: #2ca02c; }
+  .form .color-3 {
+    background-color: #d62728; }
+  .form .color-4 {
+    background-color: #9467bd; }
+  .form .color-5 {
+    background-color: #8c564b; }
+  .form .color-6 {
+    background-color: #e377c2; }
+  .form .color-7 {
+    background-color: #7f7f7f; }
+  .form .color-8 {
+    background-color: #bcbd22; }
+  .form .color-9 {
+    background-color: #17becf; }
