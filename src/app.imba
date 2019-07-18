@@ -1,5 +1,5 @@
 class AntSimulation
-  def initialize
+  def initialize(number_of_states, state_actions)
     @trace = []
     @trace_idx = {}
     @x = 0
@@ -11,6 +11,9 @@ class AntSimulation
     @xmin = -10
     @ymax = 10
     @xmax = 10
+
+    @number_of_states = number_of_states
+    @state_actions = state_actions
 
   def current_state
     let idx = "{@x},{@y}"
@@ -25,7 +28,7 @@ class AntSimulation
     if @trace_idx[idx] != undefined
       let loc = @trace_idx[idx]
       let c = @trace[loc]:c
-      @trace[loc]:c = (c + 1) % 2
+      @trace[loc]:c = (c + 1) % @number_of_states
       c
     else
       @ymin = Math.min(@ymin, @y - 1)
@@ -56,20 +59,39 @@ class AntSimulation
     @x += @dx
     @y += @dy
     let c = increment_current_state
-    if c == 0
+    let action = @state_actions[c]
+    if action === "R"
       turn_right
-    else
+    else if action === "L"
       turn_left
+    else
+      0
 
 tag App
   def setup
-    @sim = AntSimulation.new
-
-    set-interval(&,10) do
+    @paused = false
+    set-interval(&,60) do
       unless @paused
-        for i in [1..1000]
+        for i in [1..100]
           @sim.step
       Imba.commit
+    randomize
+
+  def randomize
+    @number_of_states = 2 + Math.floor(Math.random() * 8)
+    @state_actions = {}
+    for i in [0..8]
+      @state_actions[i] = ["L", "R", "F"][Math.floor(Math.random()*3)]
+    restart
+
+  def restart
+    @sim = AntSimulation.new(@number_of_states, @state_actions)
+
+  def pause
+    @paused = true
+
+  def resume
+    @paused = false
 
   def transform
     let xmin = @sim:_xmin
@@ -80,15 +102,6 @@ tag App
     let ysize = (ymax - ymin + 1) * 20
     let s = 400 / Math.max(xsize, ysize)
     "scale({s}) translate({-xmin*20}px, {-ymin*20}px)"
-
-  def pause
-    @paused = true
-
-  def resume
-    @paused = false
-
-  def restart
-    @sim = AntSimulation.new
 
   def render
     <self>
@@ -108,5 +121,24 @@ tag App
               "Resume"
           <button :tap.restart>
             "Restart"
+          <button :tap.randomize>
+            "Randomize"
+        <div.group>
+          <label>
+            "States"
+            <input[@number_of_states] type="range" min=1 max=9>
+        for i in [0..@number_of_states]
+          <div.group>
+            <div.state-color.{"color-{i}"}>
+              "State {i+1}"
+            <label>
+              "Left"
+              <input[@state_actions[i]] type="radio" value="L">
+            <label>
+              "Forward"
+              <input[@state_actions[i]] type="radio" value="F">
+            <label>
+              "Right"
+              <input[@state_actions[i]] type="radio" value="R">
 
 Imba.mount <App>
