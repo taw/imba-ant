@@ -10,7 +10,7 @@
 svg {
   height: 400px;
   width: 400px;
-  background-color: pink;
+  background-color: #ccc;
   margin: auto;
   display: block;
 
@@ -18,12 +18,16 @@ svg {
     stroke: 1px solid black;
   }
 
-  .color-0 {
-    fill: purple;
-  }
-  .color-1 {
-    fill: cyan;
-  }
+.color-0 { fill: #1f77b4; }
+.color-1 { fill: #ff7f0e; }
+.color-2 { fill: #2ca02c; }
+.color-3 { fill: #d62728; }
+.color-4 { fill: #9467bd; }
+.color-5 { fill: #8c564b; }
+.color-6 { fill: #e377c2; }
+.color-7 { fill: #7f7f7f; }
+.color-8 { fill: #bcbd22; }
+.color-9 { fill: #17becf; }
 }
 
 .form {
@@ -40,10 +44,15 @@ svg {
     padding: 3px;
     display: inline-block;
   }
-  .color-0 {
-    background-color: purple;
-  }
-  .color-1 {
-    background-color: cyan;
-  }
+.color-0 { background-color: #1f77b4; }
+.color-1 { background-color: #ff7f0e; }
+.color-2 { background-color: #2ca02c; }
+.color-3 { background-color: #d62728; }
+.color-4 { background-color: #9467bd; }
+.color-5 { background-color: #8c564b; }
+.color-6 { background-color: #e377c2; }
+.color-7 { background-color: #7f7f7f; }
+.color-8 { background-color: #bcbd22; }
+.color-9 { background-color: #17becf; }
 }
+
